@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: Music-Bot
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python main.py"
+    envVars:
+      - key: API_ID
+        value: 20122664
+      - key: API_HASH
+        value: 1a5aa99afc6202b226903223c4cfa884
+      - key: SESSION_STRING
+        value: BQEzDCgAr0uO1xU3CwpPv6GfBKvFb22WGcWHqkIai3x6jHILKxI5kPcUpGUlRGNEEQJnsZLYqm1dnMy4NFExCSLnDLzcdhhkhB0lH6vE5cB1nkO-8xQh3U2IHwDWkuKU4RCdYoqVJW9tyHnGJBByUqm5K_58921jh0ZTv2ylqnSqMTRWnZ2LKy70Q2_SRY2z3uzC9DHpWI-S9BpCBZBsVhNcz6Tt2R_XGAZeJsQFjOb7zH2cRn5KpkePbW_JMOvdLtlz4lHX5tHXASf9Wtb6zLyImD-PvLbGLilhRXfzZuL91Pt_r1_rnRE9nmQR549Vjcc4SlEzXEu1RUw3t33H9Ojrhb59xQAAAAHX4I2qAQ
+      # Add more variables if needed
