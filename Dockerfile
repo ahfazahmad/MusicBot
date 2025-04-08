@@ -1,27 +1,25 @@
-# Use official Python image
 FROM python:3.10-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt update && apt install -y ffmpeg
+# Install ffmpeg, gcc, and libc-dev (for building packages like pytgcalls)
+RUN apt update && apt install -y ffmpeg gcc libc-dev
 
-# Create virtual environment
+# Create a virtual environment
 RUN python -m venv /opt/venv
 
-# Activate virtual environment
+# Activate the virtual environment
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy requirements first
 COPY requirements.txt .
 
-# Upgrade pip and install Python dependencies
+# Upgrade pip and install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Now copy your entire project
+# Copy the rest of your project
 COPY . .
 
-# Set command to run your app
+# Start your app
 CMD ["python", "main.py"]
