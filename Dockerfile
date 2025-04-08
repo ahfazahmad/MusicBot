@@ -1,24 +1,27 @@
-# Use Python 3.10
+# Use official Python image
 FROM python:3.10-slim
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Create venv
+# Install system dependencies
+RUN apt update && apt install -y ffmpeg
+
+# Create virtual environment
 RUN python -m venv /opt/venv
 
-# Tell Docker to use venv
+# Activate virtual environment
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy requirements first
 COPY requirements.txt .
 
-# Upgrade pip and install dependencies
+# Upgrade pip and install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the entire project
+# Now copy your entire project
 COPY . .
 
-# Run your bot
+# Set command to run your app
 CMD ["python", "main.py"]
